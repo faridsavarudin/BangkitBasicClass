@@ -1,62 +1,86 @@
 package id.bangkit.android
 
 import android.content.Intent
+import android.content.res.TypedArray
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var rvCars: RecyclerView
-    private var list: ArrayList<Car> = arrayListOf()
+    private lateinit var rvUsers: RecyclerView
+    private var list: ArrayList<User> = arrayListOf()
+
+    private lateinit var dataName: Array<String>
+    private lateinit var dataUsername: Array<String>
+    private lateinit var dataLocations: Array<String>
+    private lateinit var dataCompany: Array<String>
+    private lateinit var dataRepository: Array<String>
+    private lateinit var dataFollowing: Array<String>
+    private lateinit var dataPhoto: TypedArray
+    private lateinit var dataFollowers: Array<String>
+    private lateinit var adapter: UserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportActionBar?.title = "My Nissan Car"
+        supportActionBar?.title = "Github User's"
 
-        rvCars = findViewById(R.id.rv_cars)
-        rvCars.setHasFixedSize(true)
-        list.addAll(CarsData.listData)
+        rvUsers = findViewById(R.id.rv_users)
+        rvUsers.setHasFixedSize(true)
+
         showRecyclerList()
     }
 
     private fun showRecyclerList() {
-        rvCars.layoutManager = LinearLayoutManager(this)
-        val listHeroAdapter = CarAdapter(list)
-        rvCars.adapter = listHeroAdapter
+        rvUsers.layoutManager = LinearLayoutManager(this)
+        adapter = UserAdapter(this)
+        rvUsers.adapter = adapter
 
-        listHeroAdapter.setOnItemClickCallback(object : CarAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: Car) {
+        prepareLoad()
+        addItem()
+
+        adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: User) {
                 showCarSelected(data)
             }
 
         })
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.profile,menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
-            R.id.profile -> {
-                val moveToAbout = Intent(this@MainActivity, AboutActivity::class.java)
-                startActivity(moveToAbout)
-                true
+    private fun addItem() {
+            for (position in dataName.indices) {
+                val hero = User(
+                    dataUsername[position],
+                    dataName[position],
+                    dataFollowers[position],
+                    dataFollowing[position],
+                    dataPhoto.getResourceId(position, -1),
+                    dataLocations[position],
+                    dataCompany[position],
+                    dataRepository[position]
+                )
+                list.add(hero)
             }
-            else -> super.onOptionsItemSelected(item)
-        }
+            adapter.listUser = list
     }
 
-    private fun showCarSelected(data: Car) {
-        val detailCar = Intent(this@MainActivity, DetailCarActivity::class.java)
+    private fun prepareLoad() {
+        dataName = resources.getStringArray(R.array.name)
+        dataUsername = resources.getStringArray(R.array.username)
+        dataPhoto = resources.obtainTypedArray(R.array.avatar)
+        dataCompany = resources.getStringArray(R.array.company)
+        dataFollowers = resources.getStringArray(R.array.followers)
+        dataFollowing = resources.getStringArray(R.array.following)
+        dataLocations = resources.getStringArray(R.array.location)
+        dataRepository = resources.getStringArray(R.array.repository)
+    }
+
+    private fun showCarSelected(data: User) {
+        val detailCar = Intent(this@MainActivity, DetailUserActivity::class.java)
         detailCar.apply {
-            putExtra("DATA", data)
+            putExtra(DetailUserActivity.STATE_INTENT, data)
 
         }
         startActivity(detailCar)

@@ -18,10 +18,10 @@
         android:orientation="horizontal"
         android:padding="@dimen/default_padding">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_item_photo"
-            android:layout_width="85dp"
-            android:layout_height="85dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_marginEnd="@dimen/default_padding"
             android:layout_marginRight="@dimen/default_padding"
             tools:src="@android:color/darker_gray" />
@@ -29,42 +29,26 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/iv_item_photo"
             android:layout_toRightOf="@id/iv_item_photo"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_item_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="@dimen/size_title"
+                android:layout_marginBottom="8dp" />
+            <TextView
                 android:id="@+id/tv_item_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/size_title"
-                android:textStyle="bold"
-                tools:text="@string/car_name" />
+                android:textSize="@dimen/size_desc"
+                android:layout_below="@id/tv_item_username"
+                android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/tv_item_model"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@id/tv_item_name"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="@dimen/size_text_default"
-                tools:text="@string/car_name" />
-
-            <TextView
-                android:id="@+id/tv_item_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_item_name"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:textColor="@color/red"
-                android:textSize="@dimen/size_price"
-                tools:text="@string/price" />
         </RelativeLayout>
     </LinearLayout>
 
