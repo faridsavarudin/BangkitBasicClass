@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_padding">16dp</dimen>
+    <dimen name="size_title">19sp</dimen>
+    <dimen name="size_price">15sp</dimen>
+    <dimen name="size_text_default">11sp</dimen>
+</resources>

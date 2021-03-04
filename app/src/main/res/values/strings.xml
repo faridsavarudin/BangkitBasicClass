@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BangkitBasicClass</string>
+    <string name="car_name">Avanza</string>
+    <string name="price">Rp. 2 Juta</string>
+    <string name="profile">Profile</string>
+    <string name="body_type">Tipe Bodi</string>
+    <string name="price_label">Harga</string>
+    <string name="transmition">Transmisi</string>
+    <string name="desc">Deskripsi</string>
+    <string name="email">a1611758@bangkit.academy, \nfaridsavarudin@gmail.com</string>
+    <string name="my_name">farid savarudin</string>
+</resources>
