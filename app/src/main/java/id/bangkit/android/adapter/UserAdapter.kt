@@ -1,26 +1,34 @@
-package id.bangkit.android
+package id.bangkit.android.adapter
 
-import android.content.Context
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import id.bangkit.android.R
+import id.bangkit.android.databinding.ItemUserBinding
+import id.bangkit.android.model.ItemUser
 
-class UserAdapter internal constructor(private val context: Context) : RecyclerView.Adapter<UserAdapter.CarViewHolder>(){
+class UserAdapter : RecyclerView.Adapter<UserAdapter.CarViewHolder>(){
 
     private lateinit var onItemClickCallback: OnItemClickCallback
-    internal var listUser = arrayListOf<User>()
+    internal var listUser = arrayListOf<ItemUser>()
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
+    fun setData(items: MutableList<ItemUser>) {
+        listUser.clear()
+        listUser.addAll(items)
+        notifyDataSetChanged()
+    }
+
     class CarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvName: TextView = itemView.findViewById(R.id.tv_item_name)
-        val ivPicture: ImageView = itemView.findViewById(R.id.iv_item_photo)
-        val tvUsername: TextView = itemView.findViewById(R.id.tv_item_username)
+        val binding = ItemUserBinding.bind(itemView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
@@ -34,10 +42,14 @@ class UserAdapter internal constructor(private val context: Context) : RecyclerV
     override fun onBindViewHolder(holder: CarViewHolder, position: Int) {
         val user = listUser[position]
 
-        holder.tvName.text = user.name
-        holder.tvUsername.text = user.username
+        holder.binding.tvItemName.text = user.login
+        holder.binding.tvItemUsername.text = user.type
 
-        user.avatar?.let { holder.ivPicture.setImageResource(it) }
+        Glide.with(holder.itemView.context)
+            .load(user.avatarUrl)
+            .circleCrop()
+            .into(holder.binding.ivItemPhoto)
+
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])
         }
@@ -45,6 +57,6 @@ class UserAdapter internal constructor(private val context: Context) : RecyclerV
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: User)
+        fun onItemClicked(data: ItemUser)
     }
 }

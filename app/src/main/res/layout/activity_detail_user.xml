@@ -1,174 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context=".DetailUserActivity">
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="34dp"
-        android:layout_height="wrap_content">
-
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="150dp"
-            android:id="@+id/iv_avatar"
-            android:src="@drawable/user_ten"
-            android:layout_height="150dp"/>
-
-        <TextView
-            android:id="@+id/tv_item_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/size_medium"
-            android:text="@string/sample_name"
-            android:textSize="@dimen/size_title"
-            android:layout_marginBottom="3dp" />
-        <TextView
-            android:id="@+id/tv_item_name"
-            android:layout_width="wrap_content"
-            android:text="@string/sample_username"
-            android:textSize="@dimen/size_desc"
-            android:layout_height="wrap_content" />
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_work"
-                android:layout_width="wrap_content"/>
-            <TextView
-                android:id="@+id/tv_company"
-                android:layout_width="wrap_content"
-                android:text="@string/company"
-                android:layout_marginLeft="5dp"
-                android:textSize="@dimen/size_desc"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_place"
-                android:layout_width="wrap_content"/>
-            <TextView
-                android:id="@+id/tv_location"
-                android:layout_width="wrap_content"
-                android:text="@string/location"
-                android:layout_marginLeft="5dp"
-                android:textSize="@dimen/size_desc"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@color/white"
-            android:layout_marginTop="4dp"
-            android:elevation="4dp"
-            card_view:cardCornerRadius="4dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-
-            <LinearLayout
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp"
-                android:paddingVertical="@dimen/size_medium"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical"
+                <com.google.android.material.appbar.AppBarLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:text="@string/repository"
-                        android:textSize="@dimen/size_desc" />
 
-                    <TextView
-                        android:id="@+id/tv_repository"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="1"
-                        android:textSize="@dimen/size_desc"
-                        android:layout_marginBottom="3dp" />
+                    <com.google.android.material.appbar.CollapsingToolbarLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                </LinearLayout>
+                                <com.google.android.material.tabs.TabLayout
+                                    android:id="@+id/tabs"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:minHeight="?actionBarSize"
+                                    card_view:tabIndicatorFullWidth="true"
+                                    card_view:tabMode="fixed"
+                                    tools:ignore="MissingConstraints" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:text="@string/followers"
-                        android:textSize="@dimen/size_desc" />
+                                <androidx.appcompat.widget.Toolbar
+                                    android:layout_width="match_parent"
+                                    android:layout_height="57dp" />
 
-                    <TextView
-                        android:id="@+id/tv_followers"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="1"
-                        android:textSize="@dimen/size_desc"
-                        android:layout_marginBottom="3dp" />
 
-                </LinearLayout>
+                                <LinearLayout
+                                    android:id="@+id/rel_container"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="21dp"
+                                    android:layout_marginTop="21dp"
+                                    android:layout_marginBottom="69dp"
+                                    android:fitsSystemWindows="true"
+                                    android:focusable="true"
+                                    android:orientation="vertical"
+                                    app:layout_scrollFlags="scroll|enterAlways">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:text="@string/following"
-                        android:textSize="@dimen/size_desc" />
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:orientation="vertical"
+                                            android:gravity="center"
+                                            android:layout_marginTop="21dp"
+                                            android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/tv_following"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="1"
-                        android:textSize="@dimen/size_desc"
-                        android:layout_marginBottom="3dp" />
 
-                </LinearLayout>
+                                            <de.hdodenhof.circleimageview.CircleImageView
+                                                android:layout_width="100dp"
+                                                android:id="@+id/iv_avatar"
+                                                android:contentDescription="avatar"
+                                                android:src="@drawable/ic_baseline_account_circle"
+                                                android:layout_height="100dp"/>
 
-            </LinearLayout>
+                                            <TextView
+                                                android:id="@+id/tv_item_username"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textStyle="bold"
+                                                android:layout_marginTop="@dimen/size_medium"
+                                                android:textSize="@dimen/size_title"
+                                                android:layout_marginBottom="3dp" />
+                                            <TextView
+                                                android:id="@+id/tv_item_name"
+                                                android:layout_width="wrap_content"
+                                                android:textSize="@dimen/size_desc"
+                                                android:layout_height="wrap_content" />
 
-        </androidx.cardview.widget.CardView>
-    </LinearLayout>
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:orientation="horizontal"
+                                                android:layout_marginTop="8dp"
+                                                android:id="@+id/lv_company"
+                                                android:layout_height="wrap_content">
 
+                                                <ImageView
+                                                    android:layout_height="wrap_content"
+                                                    android:src="@drawable/ic_baseline_work"
+                                                    android:layout_width="wrap_content"/>
+                                                <TextView
+                                                    android:id="@+id/tv_company"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:textSize="@dimen/size_desc"
+                                                    android:layout_height="wrap_content" />
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:orientation="horizontal"
+                                                android:id="@+id/lv_place"
+                                                android:layout_marginTop="8dp"
+                                                android:layout_height="wrap_content">
+
+                                                <ImageView
+                                                    android:layout_height="wrap_content"
+                                                    android:src="@drawable/ic_baseline_place"
+                                                    android:layout_width="wrap_content"/>
+                                                <TextView
+                                                    android:id="@+id/tv_location"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:textSize="@dimen/size_desc"
+                                                    android:layout_height="wrap_content" />
+                                            </LinearLayout>
+
+                                            <androidx.cardview.widget.CardView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="4dp"
+                                                android:layout_marginLeft="8dp"
+                                                android:layout_marginRight="8dp"
+                                                android:background="@color/white"
+                                                android:layout_marginTop="4dp"
+                                                card_view:cardElevation="3dp"
+                                                card_view:cardCornerRadius="4dp">
+
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:orientation="horizontal"
+                                                    android:paddingVertical="@dimen/size_medium"
+                                                    android:layout_height="wrap_content">
+
+                                                    <LinearLayout
+                                                        android:layout_width="0dp"
+                                                        android:layout_weight="1"
+                                                        android:gravity="center"
+                                                        android:orientation="vertical"
+                                                        android:layout_height="wrap_content">
+                                                        <TextView
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:textStyle="bold"
+                                                            android:text="@string/repository"
+                                                            android:textSize="@dimen/size_desc" />
+
+                                                        <TextView
+                                                            android:id="@+id/tv_repository"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginTop="5dp"
+                                                            android:text="0"
+                                                            android:textSize="@dimen/size_desc"
+                                                            android:layout_marginBottom="3dp" />
+
+                                                    </LinearLayout>
+
+                                                    <LinearLayout
+                                                        android:layout_width="0dp"
+                                                        android:layout_weight="1"
+                                                        android:gravity="center"
+                                                        android:orientation="vertical"
+                                                        android:layout_height="wrap_content">
+                                                        <TextView
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:textStyle="bold"
+                                                            android:text="@string/followers"
+                                                            android:textSize="@dimen/size_desc" />
+
+                                                        <TextView
+                                                            android:id="@+id/tv_followers"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginTop="5dp"
+                                                            android:text="0"
+                                                            android:textSize="@dimen/size_desc"
+                                                            android:layout_marginBottom="3dp" />
+
+                                                    </LinearLayout>
+
+                                                    <LinearLayout
+                                                        android:layout_width="0dp"
+                                                        android:layout_weight="1"
+                                                        android:gravity="center"
+                                                        android:orientation="vertical"
+                                                        android:layout_height="wrap_content">
+                                                        <TextView
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:textStyle="bold"
+                                                            android:text="@string/following"
+                                                            android:textSize="@dimen/size_desc" />
+
+                                                        <TextView
+                                                            android:id="@+id/tv_following"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginTop="5dp"
+                                                            android:text="0"
+                                                            android:textSize="@dimen/size_desc"
+                                                            android:layout_marginBottom="3dp" />
+
+                                                    </LinearLayout>
+
+                                                </LinearLayout>
+
+                                            </androidx.cardview.widget.CardView>
+
+                                        </LinearLayout>
+
+                                </LinearLayout>
+
+                    </com.google.android.material.appbar.CollapsingToolbarLayout>
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    android:layout_height="match_parent"
+                    android:background="@color/white" />
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        </LinearLayout>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress"
+        android:layout_centerInParent="true"/>
 </RelativeLayout>
