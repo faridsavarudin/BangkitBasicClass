@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import id.bangkit.android.R
-import id.bangkit.android.adapter.SectionsPagerAdapter
+import id.bangkit.android.adapter.DetailUserPagerAdapter
 import id.bangkit.android.databinding.ActivityDetailUserBinding
 import id.bangkit.android.model.ItemUser
 
@@ -60,7 +60,7 @@ class DetailUserActivity : AppCompatActivity() {
     fun getUsername() = username
 
     private fun setupViewPager() {
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
+        val sectionsPagerAdapter = DetailUserPagerAdapter(this, supportFragmentManager)
         binding.viewPager.adapter = sectionsPagerAdapter
         binding.tabs.setupWithViewPager(binding.viewPager)
     }

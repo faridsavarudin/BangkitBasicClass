@@ -10,12 +10,12 @@ import id.bangkit.android.R
 import id.bangkit.android.ui.follower.FollowersFragment
 import id.bangkit.android.ui.following.FollowingFragment
 
-class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) :
+class DetailUserPagerAdapter(private val mContext: Context, fm: FragmentManager) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     companion object {
         @StringRes
-        private val TAB_TITLES = intArrayOf(
+        private val title = intArrayOf(
             R.string.followers,
             R.string.following
         )
@@ -32,7 +32,7 @@ class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) :
 
     @Nullable
     override fun getPageTitle(position: Int): CharSequence? {
-        return mContext.resources.getString(TAB_TITLES[position])
+        return mContext.resources.getString(title[position])
     }
 
     override fun getCount(): Int {
