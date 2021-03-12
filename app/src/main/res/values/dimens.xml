@@ -3,6 +3,5 @@
     <dimen name="default_padding">16dp</dimen>
     <dimen name="size_title">19sp</dimen>
     <dimen name="size_desc">15sp</dimen>
-    <dimen name="size_text_default">11sp</dimen>
     <dimen name="size_medium">13dp</dimen>
 </resources>

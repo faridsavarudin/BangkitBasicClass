@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BangkitBasicClass</string>
-    <string name="profile">Profil</string>
     <string name="change_language">Ubah Bahasa</string>
-    <string name="desc">Deskripsi</string>
-    <string name="location">Lokasi</string>
-    <string name="company">Perusahaan</string>
     <string name="sample_username">sidiqpermana</string>
     <string name="sample_name">Sidiq Permana</string>
     <string name="repository">Repositori</string>
