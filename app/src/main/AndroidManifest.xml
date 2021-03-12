@@ -2,7 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="id.bangkit.android">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <permission
+        android:name="id.bangkit.android.provider.READ_DATABASE"
+        android:protectionLevel="normal" />
+
+    <permission
+        android:name="id.bangkit.android.provider.WRITE_DATABASE"
+        android:protectionLevel="normal" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,8 +18,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BangkitBasicClass">
-        <activity android:name=".ui.detail.DetailUserActivity"
-            android:parentActivityName=".ui.main.MainActivity"></activity>
+
+        <activity android:name=".ui.favorite.FavoriteActivity"
+            android:parentActivityName=".ui.main.MainActivity">
+
+        </activity>
+        <activity android:name=".ui.setting.SettingActivity"
+            android:parentActivityName=".ui.main.MainActivity"/>
+        <activity
+            android:name=".ui.detail.DetailUserActivity"
+            android:parentActivityName=".ui.main.MainActivity" />
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
@@ -21,7 +37,41 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity"></activity>
+        <activity android:name=".ui.main.MainActivity" />
+
+        <receiver android:name=".widget.FavoriteWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/favorite_widget_info" />
+        </receiver>
+
+        <service
+            android:name=".widget.FavoriteService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <receiver
+            android:name=".widget.NotificationReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <provider
+            android:name=".provider.UserProvider"
+            android:authorities="id.bangkit.android.provider"
+            android:multiprocess="true"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".widget.NotificationReceiver"
+            android:enabled="true"
+            android:exported="true" />
     </application>
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

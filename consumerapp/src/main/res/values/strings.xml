@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Consumer App</string>
+    <string name="profile">Profile</string>
+    <string name="change_language">Change Language</string>
+    <string name="desc">Deskripsi</string>
+    <string name="location">location</string>
+    <string name="company">company</string>
+    <string name="sample_username">sidiqpermana</string>
+    <string name="sample_name">Sidiq Permana</string>
+    <string name="repository">Repository</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="detail_user">Detail User</string>
+    <string name="main_page">Github User</string>
+
+    <string name="find_github_user_s">Find Github Users</string>
+    <string name="your_search_result_will_appear_here">Your search result will appear here</string>
+    <string name="no_data_available">No data available</string>
+    <string name="no_dataFavorite__available">No Favorite data available</string>
+    <string name="search">Search...</string>
+
+    <string name="reminder_for_return_the_app">Reminder for return the app</string>
+    <string name="favorite">Favorite</string>
+
+
+</resources>

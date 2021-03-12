@@ -13,7 +13,6 @@ object ApiClient {
             val logging = HttpLoggingInterceptor()
             logging.level = HttpLoggingInterceptor.Level.BODY
             val okHttpClient = OkHttpClient().newBuilder()
-
                 .addInterceptor { chain ->
                 var originalRequest = chain.request()
                 val httpUrl = originalRequest.url

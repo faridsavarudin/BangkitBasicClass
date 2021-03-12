@@ -1,6 +1,8 @@
 package id.bangkit.android.model
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
@@ -11,6 +13,7 @@ data class UsersResponse(
 )
 
 @Parcelize
+@Entity(tableName = "tb_user")
 data class ItemUser(
 
 	@field:SerializedName("gists_url")
@@ -73,8 +76,9 @@ data class ItemUser(
 	@field:SerializedName("site_admin")
 	val siteAdmin: Boolean? = null,
 
+	@PrimaryKey
 	@field:SerializedName("id")
-	val id: Int? = null,
+	val id: Int = 0,
 
 	@field:SerializedName("gravatar_id")
 	val gravatarId: String? = null,

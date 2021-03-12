@@ -1,4 +1,4 @@
-package id.bangkit.android
+package id.bangkit.android.rest
 
 import id.bangkit.android.model.ItemUser
 import id.bangkit.android.model.UsersResponse

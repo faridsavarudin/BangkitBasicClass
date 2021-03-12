@@ -2,9 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.main.MainActivity">
+
+    <item
+        android:id="@+id/favorite"
+        android:title="@string/favorite"
+        android:icon="@drawable/ic_baseline_favorite_border_24"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/share"
+        android:title="@string/share"
+        android:icon="@drawable/ic_baseline_share_24"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/change_language"
         android:title="@string/change_language"
         android:icon="@drawable/ic_baseline_settings"
         app:showAsAction="always"/>
+
+
 </menu>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BangkitBasicClass</string>
+    <string name="profile">Profil</string>
+    <string name="change_language">Ubah Bahasa</string>
+    <string name="desc">Deskripsi</string>
+    <string name="location">Lokasi</string>
+    <string name="company">Perusahaan</string>
+    <string name="sample_username">sidiqpermana</string>
+    <string name="sample_name">Sidiq Permana</string>
+    <string name="repository">Repositori</string>
+    <string name="followers">Pengikut</string>
+    <string name="following">Di Ikuti</string>
+    <string name="detail_user">Pengguna Detil</string>
+    <string name="main_page">Pengguna Github</string>
+    <string name="no_dataFavorite__available">Tidak ada daftar favorite</string>
+
+    <string name="find_github_user_s">Temukan Pengguna Github</string>
+    <string name="your_search_result_will_appear_here">Hasil pencarian Anda akan muncul di sini</string>
+    <string name="no_data_available">Tidak ada data tersedia</string>
+    <string name="search">Pencarian...</string>
+
+    <string name="reminder_for_return_the_app">Reminder for return the app</string>
+</resources>

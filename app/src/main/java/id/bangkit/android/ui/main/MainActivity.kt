@@ -3,6 +3,8 @@ package id.bangkit.android.ui.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
@@ -13,6 +15,8 @@ import id.bangkit.android.adapter.UserAdapter
 import id.bangkit.android.databinding.ActivityMainBinding
 import id.bangkit.android.model.ItemUser
 import id.bangkit.android.ui.detail.DetailUserActivity
+import id.bangkit.android.ui.favorite.FavoriteActivity
+import id.bangkit.android.ui.setting.SettingActivity
 import id.bangkit.android.utils.hideKeyboard
 
 class MainActivity : AppCompatActivity() {
@@ -87,13 +91,32 @@ class MainActivity : AppCompatActivity() {
             this, ViewModelProvider.NewInstanceFactory()).get(SearchViewModel::class.java)
         adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback{
             override fun onItemClicked(data: ItemUser) {
-                showCarSelected(data)
+                showUserSelected(data)
             }
 
         })
     }
 
-    private fun showCarSelected(data: ItemUser) {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.favorites, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.favorite -> {
+                startActivity(Intent(applicationContext, FavoriteActivity::class.java))
+                return super.onOptionsItemSelected(item)
+            }
+            R.id.change_language -> {
+                startActivity(Intent(applicationContext, SettingActivity::class.java))
+                return super.onOptionsItemSelected(item)
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showUserSelected(data: ItemUser) {
         val detailCar = Intent(this@MainActivity, DetailUserActivity::class.java)
         detailCar.apply {
             putExtra(DetailUserActivity.STATE_INTENT, data)

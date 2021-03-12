@@ -16,7 +16,14 @@
     <string name="find_github_user_s">Find Github Users</string>
     <string name="your_search_result_will_appear_here">Your search result will appear here</string>
     <string name="no_data_available">No data available</string>
+    <string name="no_dataFavorite__available">No Favorite data available</string>
     <string name="search">Search...</string>
+
+    <string name="reminder_for_return_the_app">Reminder for return the app</string>
+    <string name="favorite">Favorite</string>
+    <string name="favorite_user">Favorite User</string>
+    <string name="daily_reminder">Daily reminder</string>
+    <string name="share">Share</string>
 
 
 </resources>
