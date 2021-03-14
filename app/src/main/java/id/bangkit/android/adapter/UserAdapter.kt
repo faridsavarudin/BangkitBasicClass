@@ -10,14 +10,10 @@ import id.bangkit.android.R
 import id.bangkit.android.databinding.ItemUserBinding
 import id.bangkit.android.model.ItemUser
 
-class UserAdapter : RecyclerView.Adapter<UserAdapter.CarViewHolder>(){
+class UserAdapter(private val onClick: (user: ItemUser) -> Unit)
+    : RecyclerView.Adapter<UserAdapter.CarViewHolder>(){
 
-    private lateinit var onItemClickCallback: OnItemClickCallback
-    internal var listUser = arrayListOf<ItemUser>()
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
+    private var listUser = arrayListOf<ItemUser>()
 
     fun setData(items: MutableList<ItemUser>) {
         listUser.clear()
@@ -49,12 +45,8 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.CarViewHolder>(){
             .into(holder.binding.ivItemPhoto)
 
         holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])
+            onClick.invoke(user)
         }
 
-    }
-
-    interface OnItemClickCallback {
-        fun onItemClicked(data: ItemUser)
     }
 }

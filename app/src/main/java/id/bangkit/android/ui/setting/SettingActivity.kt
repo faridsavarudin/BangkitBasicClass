@@ -6,21 +6,25 @@ import android.os.Bundle
 import android.provider.Settings
 import com.orhanobut.hawk.Hawk
 import id.bangkit.android.R
+import id.bangkit.android.databinding.ActivitySettingBinding
 import id.bangkit.android.widget.NotificationReceiver
-import kotlinx.android.synthetic.main.activity_setting.*
 
 class SettingActivity : AppCompatActivity() {
 
 
     private var notificationReceiver: NotificationReceiver? = null
+    private lateinit var binding: ActivitySettingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_setting)
+        binding = ActivitySettingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        supportActionBar?.title = getString(R.string.setting_page)
+
         Hawk.init(this).build()
         notificationReceiver = NotificationReceiver()
         checkStatus()
-        switch_daily.setOnCheckedChangeListener { _, isChecked ->
+        binding.switchDaily.setOnCheckedChangeListener { _, isChecked ->
             Hawk.put("daily_reminder", isChecked)
             if (isChecked) {
                 notificationReceiver?.setDailyReminder(applicationContext)
@@ -29,7 +33,7 @@ class SettingActivity : AppCompatActivity() {
             }
         }
 
-        change_language.setOnClickListener {
+        binding.changeLanguage.setOnClickListener {
             val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
             startActivity(mIntent)
         }
@@ -41,6 +45,6 @@ class SettingActivity : AppCompatActivity() {
         if (Hawk.get<Boolean>("daily_reminder") != null) {
             dailyReminder = Hawk.get<Boolean>("daily_reminder")
         }
-        switch_daily.isChecked = dailyReminder
+        binding.switchDaily.isChecked = dailyReminder
     }
 }

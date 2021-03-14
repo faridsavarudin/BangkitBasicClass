@@ -34,14 +34,11 @@ class FavoriteActivity : AppCompatActivity() {
 
     private fun initListFavorite() {
         binding.rvUser.layoutManager = LinearLayoutManager(this)
-        adapter = UserAdapter()
+        adapter = UserAdapter{
+            showUserSelected(it)
+        }
         binding.rvUser.adapter = adapter
-        adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: ItemUser) {
-                showUserSelected(data)
-            }
 
-        })
     }
 
     private fun showUserSelected(data: ItemUser) {
@@ -54,14 +51,16 @@ class FavoriteActivity : AppCompatActivity() {
 
     private fun showDataFavorite() {
         dao?.getAllFavUser()?.observe(this, Observer { result ->
-            binding.progress.visibility = View.GONE
-            if (result.size >0){
-                adapter.setData(result)
-                binding.rvUser.visibility = View.VISIBLE
-                binding.lvEmptyData.visibility = View.GONE
-            } else {
-                binding.rvUser.visibility = View.GONE
-                binding.lvEmptyData.visibility = View.VISIBLE
+            binding.run {
+                progress.visibility = View.GONE
+                if (result.size > 0) {
+                    adapter.setData(result)
+                    rvUser.visibility = View.VISIBLE
+                    lvEmptyData.visibility = View.GONE
+                } else {
+                    rvUser.visibility = View.GONE
+                    lvEmptyData.visibility = View.VISIBLE
+                }
             }
         })
     }

@@ -1,5 +1,6 @@
 package id.bangkit.android.ui.follower
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -64,8 +65,18 @@ class FollowersFragment : Fragment() {
 
     private fun initListFollowers() {
         binding.rvUser.layoutManager = LinearLayoutManager(requireContext())
-        adapter = UserAdapter()
+        adapter = UserAdapter {
+            showUserSelected(it)
+        }
         binding.rvUser.adapter = adapter
+    }
+
+    private fun showUserSelected(data: ItemUser) {
+        val detailCar = Intent(requireContext(), DetailUserActivity::class.java)
+        detailCar.apply {
+            putExtra(DetailUserActivity.STATE_INTENT, data)
+        }
+        startActivity(detailCar)
     }
 
 }

@@ -8,6 +8,7 @@
     <string name="following">Following</string>
     <string name="detail_user">Detail User</string>
     <string name="main_page">Github User</string>
+    <string name="setting_page">Settings</string>
 
     <string name="find_github_user_s">Find Github Users</string>
     <string name="your_search_result_will_appear_here">Your search result will appear here</string>

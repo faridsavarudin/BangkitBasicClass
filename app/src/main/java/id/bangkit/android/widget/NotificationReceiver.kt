@@ -18,9 +18,11 @@ import java.util.*
 
 class NotificationReceiver() : BroadcastReceiver() {
 
-    private val DAILY_REMINDER = 1000
-    private val TYPE = "type"
-    private val DAILY = "daily"
+    companion object {
+        private val DAILY_REMINDER = 1000
+        private val TYPE = "type"
+        private val DAILY = "daily"
+    }
 
 
     override fun onReceive(context: Context, intent: Intent?) {
@@ -30,9 +32,9 @@ class NotificationReceiver() : BroadcastReceiver() {
             val NOTIFICATION_ID = 1
             val CHANNEL_ID = "Channel_1"
 
-            val intent = Intent(context, MainActivity::class.java)
+            val pendIntent = Intent(context, MainActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(
-                context, NOTIFICATION_ID, intent,
+                context, NOTIFICATION_ID, pendIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT
             )
 

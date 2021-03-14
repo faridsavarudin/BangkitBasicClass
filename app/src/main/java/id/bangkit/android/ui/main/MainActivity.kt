@@ -85,16 +85,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         binding.rvUser.layoutManager = LinearLayoutManager(this)
-        adapter = UserAdapter()
+        adapter = UserAdapter{
+            showUserSelected(it)
+        }
         binding.rvUser.adapter = adapter
         searchViewModel = ViewModelProvider(
             this, ViewModelProvider.NewInstanceFactory()).get(SearchViewModel::class.java)
-        adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: ItemUser) {
-                showUserSelected(data)
-            }
-
-        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
